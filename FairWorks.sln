@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FairWorks.Model", "..\FairWorks.Model\FairWorks.Model.csproj", "{D9FE0809-635E-4884-93E7-4A4E901A1E6A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FairWorks.Core", "..\FairWorks.Core\FairWorks.Core.csproj", "{B36376C5-267E-43E3-A47B-82E082FF90CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FairWorks.DAL", "..\FairWorks.DAL\FairWorks.DAL.csproj", "{703CBE31-95EB-4CD7-9B14-DEF9589626DD}"
@@ -25,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D9FE0809-635E-4884-93E7-4A4E901A1E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9FE0809-635E-4884-93E7-4A4E901A1E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9FE0809-635E-4884-93E7-4A4E901A1E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9FE0809-635E-4884-93E7-4A4E901A1E6A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B36376C5-267E-43E3-A47B-82E082FF90CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B36376C5-267E-43E3-A47B-82E082FF90CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B36376C5-267E-43E3-A47B-82E082FF90CE}.Release|Any CPU.ActiveCfg = Release|Any CPU

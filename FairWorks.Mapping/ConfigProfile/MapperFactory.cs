@@ -27,7 +27,7 @@ namespace FairWorks.Mapping.ConfigProfile
         {
             _mapper = null;
 
-            var profileTypes = Assembly.GetCallingAssembly().ExportedTypes.Where(z => z.BaseType == typeof(ProfileBase));
+            var profileTypes = Assembly.GetExecutingAssembly().ExportedTypes.Where(z => z.BaseType == typeof(ProfileBase));
             MapperConfigurationExpression exp = new MapperConfigurationExpression();
             foreach (var profileType in profileTypes)
             {

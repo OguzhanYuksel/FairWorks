@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FairWorks.BLL;
+using FairWorks.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,10 +20,11 @@ namespace FairWorks.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get()
+        [Route("[action]")]
+        public async Task<ActionResult<CompanyDTO>> Get(Guid id)
         {
-            //_companyService.
-            return Ok();
+           var company = await _companyService.GetAsync(id);
+            return company;
         }
     }
 }

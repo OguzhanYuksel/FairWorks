@@ -1,4 +1,5 @@
 ﻿//using CompanyProfile = FairWorks.Model.CompanyProfile;
+using FairWorks.DAL.Entities;
 using FairWorks.DTO;
 using FairWorks.Mapping.ConfigProfile;
 
@@ -8,7 +9,7 @@ namespace FairWorks.Mapping
     {
         public CompanyProfileProfile()
         {
-            CreateMap<FairWorks.Model.CompanyProfile, CompanyProfileDTO>().ReverseMap();
+            CreateMap<FairWorks.DAL.Entities.CompanyProfile, CompanyProfileDTO>().ReverseMap();
         }
     }
 }

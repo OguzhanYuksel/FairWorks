@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\FairWorks.Model\FairWorks.Model.csproj" />
+    <ProjectReference Include="..\..\FairWorks.DAL\FairWorks.DAL.csproj" />
     <ProjectReference Include="..\FairWorks.DTO\FairWorks.DTO.csproj" />
   </ItemGroup>
 
