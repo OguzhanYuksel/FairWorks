@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FairWorks.Core\FairWorks.Core.csproj" />
+    <ProjectReference Include="..\..\FairWorks.Model\FairWorks.Model.csproj" />
+    <ProjectReference Include="..\FairWorks.DTO\FairWorks.DTO.csproj" />
+    <ProjectReference Include="..\FairWorks.Mapping\FairWorks.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>
