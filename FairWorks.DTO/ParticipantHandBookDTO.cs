@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FairWorks.DTO
+namespace FairWorks.DTO 
 {
-    public class ParticipantHandBookDTO
+    public class ParticipantHandBookDTO : BaseDTO
     {
         public string Name { get; set; }
         public DateTime? SendDate { get; set; }

@@ -2,7 +2,7 @@
 
 namespace FairWorks.DTO
 {
-    public class OfferDTO
+    public class OfferDTO : BaseDTO
     {
         public DateTime OfferDate { get; set; }
         public SalonDTO Salon { get; set; }

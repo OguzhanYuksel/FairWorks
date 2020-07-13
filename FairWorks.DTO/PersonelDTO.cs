@@ -1,6 +1,6 @@
 ﻿namespace FairWorks.DTO
 {
-    public class PersonelDTO
+    public class PersonelDTO : BaseDTO
     {
         public string Name { get; set; }
         public string Surname { get; set; }

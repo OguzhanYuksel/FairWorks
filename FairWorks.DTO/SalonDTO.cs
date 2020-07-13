@@ -2,7 +2,7 @@
 
 namespace FairWorks.DTO
 {
-    public class SalonDTO
+    public class SalonDTO : BaseDTO
     {
         public string SalonNo { get; set; }
         public int Area { get; set; }

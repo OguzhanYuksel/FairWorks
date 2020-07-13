@@ -2,7 +2,7 @@
 
 namespace FairWorks.DTO
 {
-    public class SalesPersonDTO
+    public class SalesPersonDTO : BaseDTO
     {
         public string Name { get; set; }
         public string Surname { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace FairWorks.DTO
 {
-    public class CompanyCompanyProfileDTO
+    public class CompanyCompanyProfileDTO : BaseDTO
     {
         public CompanyDTO Company { get; set; }
 

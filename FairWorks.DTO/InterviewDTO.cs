@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FairWorks.DTO
 {
-    public class InterviewDTO
+    public class InterviewDTO : BaseDTO
     {
         public SalesPersonDTO SalesPerson { get; set; }
         public DateTime InterviewDate { get; set; }

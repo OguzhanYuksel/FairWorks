@@ -1,6 +1,6 @@
 ﻿namespace FairWorks.DTO
 {
-    public class StandDTO
+    public class StandDTO : BaseDTO
     {
         public string Code { get; set; }
         public int Width { get; set; }

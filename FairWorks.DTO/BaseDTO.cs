@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FairWorks.DTO
 {
-    public class BaseDTO
+    public class BaseDTO 
     {
         public virtual Guid Id { get; set; }
         public virtual Guid CreatedBy { get; set; }

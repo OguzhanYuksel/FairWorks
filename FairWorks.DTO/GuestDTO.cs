@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FairWorks.DTO
 {
-    public class GuestDTO
+    public class GuestDTO : BaseDTO
     {
         public string Name { get; set; }
         public string LastName { get; set; }
