@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FairWorks.BLL;
 using FairWorks.BLL.Abstract;
 using FairWorks.BLL.Services;
+using FairWorks.Core;
 using FairWorks.DAL;
 using FairWorks.DAL.Data.UnitOfWork;
 using FairWorks.Mapping.ConfigProfile;
@@ -31,6 +32,7 @@ namespace FairWorks.WebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            #region Services
             services.AddSingleton<IUnitofWork, UnitofWork>();
             services.AddSingleton<DbContext, FairWorksDbContext>();
             services.AddTransient<ICompanyService,CompanyService>();
@@ -57,6 +59,7 @@ namespace FairWorks.WebAPI
             services.AddTransient<ISectorService, SectorService>();
             services.AddTransient<IStandService, StandService>();
             services.AddTransient<IStandTypeService, StandTypeService>();
+            #endregion
             MapperFactory.RegisterMappers();
             services.AddSwaggerGen(z => z.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "FairWorksAPI", Version = "V1" }));
             services.AddControllers();
@@ -68,6 +71,9 @@ namespace FairWorks.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            var context = (FairWorksDbContext)app.ApplicationServices.GetService<DbContext>();
+            DataSeeder.SeedPersonelTypes(context);
 
             app.UseHttpsRedirection();
 

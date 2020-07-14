@@ -1,0 +1,105 @@
+﻿@model FairWorks.WebUI.Models.Personel.AddPersonelViewModel
+@{
+    ViewData["Title"] = "AddPersonel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pageHeader{
+    <div class="note note-info">
+        <p> Personel Bilgileri </p>
+    </div>
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Personel Bilgileri
+                </div>
+                <div class="tools">
+                    <a href="" class="collapse"> </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                    <a href="" class="reload"> </a>
+                    <a href="" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form asp-action="AddPersonel">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Ad</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Name" class="form-control" placeholder="Ad">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Soyad</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Surname" class="form-control" placeholder="Soyad">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Ünvan</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Title" class="form-control" placeholder="Ünvan">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Telefon</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Phone" class="form-control" placeholder="Telefon">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Mail</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Email" class="form-control" placeholder="Mail">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input has-info">
+                            <label label class="col-md-6 control-label" for="form_control_1">Ünvan</label>
+                            <div class="input-icon right">
+                                <select name="PersonelTypeId" class="form-control" id="form_control_1">
+                                    @foreach (var personelType in Model.PersonelTypes)
+                                    {
+                                        <option value="@personelType.Id">@personelType.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn blue">Kaydet</button>
+                        <button type="button" class="btn default">Sil</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>

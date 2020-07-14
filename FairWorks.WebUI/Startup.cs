@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FairWorks.WebUI.Clients.Abstract;
+using FairWorks.WebUI.Clients.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,13 +22,18 @@ namespace FairWorks.WebUI
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
+            #region HttpClients
+            services.AddHttpClient<IPersonelClient, PersonelClient>(client =>
+            {
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+            #endregion
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,7 +43,6 @@ namespace FairWorks.WebUI
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -49,7 +55,8 @@ namespace FairWorks.WebUI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

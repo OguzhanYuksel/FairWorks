@@ -2,6 +2,5 @@
 {
     public class ContractTypeDTO : BaseDTO
     {
-        public string Name { get; set; }
     }
 }

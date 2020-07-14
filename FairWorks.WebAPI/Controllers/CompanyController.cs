@@ -59,7 +59,7 @@ namespace FairWorks.WebAPI.Controllers
 
         [HttpDelete]
         [Route("[action]")]
-        public async Task<ActionResult<CompanyDTO>> Delete(Guid id)
+        public async Task<ActionResult<bool>> Delete(Guid id)
         {
             var result = await _companyService.DeleteAsync(id);
             if (result)

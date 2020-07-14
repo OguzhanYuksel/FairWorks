@@ -4,7 +4,6 @@ namespace FairWorks.DTO
 {
     public class SalesPersonDTO : BaseDTO
     {
-        public string Name { get; set; }
         public string Surname { get; set; }
         public string Title { get; set; }
         public string Phone { get; set; }

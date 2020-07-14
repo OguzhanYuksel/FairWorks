@@ -6,7 +6,6 @@ namespace FairWorks.DTO
 {
     public class ParticipantHandBookDTO : BaseDTO
     {
-        public string Name { get; set; }
         public DateTime? SendDate { get; set; }
         public PersonelDTO Personel { get; set; }
         public DateTime? DeliverDate { get; set; }
