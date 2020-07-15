@@ -13,11 +13,12 @@ namespace FairWorks.WebAPI.Controllers
         private readonly ISalesPersonService _salesPersonService;
         private readonly IInterviewerService _interviewerService;
         private readonly ICompanyService _companyService;
-        public InterviewController(IInterviewService interviewService, ISalesPersonService salesPersonService, ICompanyService companyService)
+        public InterviewController(IInterviewService interviewService, ISalesPersonService salesPersonService, ICompanyService companyService, IInterviewerService interviewerService)
         {
             _interviewService = interviewService;
             _salesPersonService = salesPersonService;
             _companyService = companyService;
+            _interviewerService = interviewerService;
         }
 
         [HttpPost]
