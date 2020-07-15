@@ -26,12 +26,30 @@ namespace FairWorks.WebUI
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
+
             #region HttpClients
             services.AddHttpClient<IPersonelClient, PersonelClient>(client =>
             {
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
+            services.AddHttpClient<IInterviewClient, InterviewClient>(client =>
+            {
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+            services.AddHttpClient<ISectorClient, SectorClient>(client =>
+            {
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+            services.AddHttpClient<ICompanyClient, CompanyClient>(client =>
+            {
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+            services.AddHttpClient<IFairClient, FairClient>(client =>
+            {
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
             #endregion
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

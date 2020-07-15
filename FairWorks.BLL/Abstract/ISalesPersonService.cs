@@ -4,10 +4,12 @@ using FairWorks.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FairWorks.BLL
 {
     public interface ISalesPersonService : IServiceBase<SalesPerson, SalesPersonDTO>
     {
+        Task<SalesPersonDTO> GetByNameAndEmailAsync(SalesPersonDTO salesPersonDTO);
     }
 }

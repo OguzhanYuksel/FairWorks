@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using FairWorks.DTO;
 using FairWorks.WebUI.Clients.Abstract;
@@ -36,7 +34,6 @@ namespace FairWorks.WebUI.Controllers
         [HttpPost]
         public IActionResult AddPersonel(PersonelDTO personelDTO)
         {
-            personelDTO.PersonelType = new PersonelTypeDTO() { Id = Guid.Parse(personelDTO.PersonelTypeId)};
             var personel = _personelClient.AddPersonel(personelDTO);
             return Ok();
         }

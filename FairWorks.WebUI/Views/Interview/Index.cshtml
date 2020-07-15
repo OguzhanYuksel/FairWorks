@@ -1,0 +1,211 @@
+﻿@model FairWorks.WebUI.Models.Interview.InterviewViewModel
+@{
+    ViewData["Title"] = "Interview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section DataTableCSS{
+    <link href="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" />
+    <link href="~/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" />
+    <link href="~/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+}
+
+@section pageHeader{
+    <div class="note note-info">
+        <p> Görüşme Bilgileri,Teklif Bilgileri,Sözleşme Bilgileri</p>
+    </div>
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="portlet box red">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Görüşme Bilgileri
+                </div>
+                <div class="tools">
+                    <a href="~/assets/global/plugins/codemirror/addon/hint/javascript-hint.js" class="collapse" data-original-title="" title=""> </a>
+                    <a href="~/assets/assets/global/img/portlet-collapse-icon.png" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+                    <a href="~/assets/global/plugins/codemirror/addon/hint/javascript-hint.js" class="reload" data-original-title="" title=""> </a>
+                    <a href="~/assets/global/plugins/codemirror/addon/hint/javascript-hint.js" class="remove" data-original-title="" title=""> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form asp-action="AddInterview">
+                    <div class="form-body">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Görüşmeyi Yapan Satış Personeli</label>
+                            <input name="SalesPerson.Name" type="text" class="form-control" placeholder="İsim">
+                            <input name="SalesPerson.Surname" type="text" class="form-control" placeholder="Soyisim">
+                            <input name="SalesPerson.Phone" type="text" class="form-control" placeholder="Telefon">
+                            <input name="SalesPerson.Email" type="text" class="form-control" placeholder="Mail">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Görüşülen Kişinin Bilgileri</label>
+                            <input name="Interviewer.Name" type="text" class="form-control" placeholder="İsim">
+                            <input name="Interviewer.Surname" type="text" class="form-control" placeholder="Soyisim">
+                            <input name="Interviewer.Phone" type="text" class="form-control" placeholder="Telefon">
+                            <input name="Interviewer.DirectPhone" type="text" class="form-control" placeholder="Dahili Telefon">
+                            <input name="Interviewer.Email" type="text" class="form-control" placeholder="Mail">
+                            <input name="Interviewer.Title" type="text" class="form-control" placeholder="Ünvanı">
+                            <input name="Company.Name" type="text" class="form-control" placeholder="Firma Adı">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Görüşme Tarihi</label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class='input-group date' id='InterviewDatePicker'>
+                                            <input type='text' name="InterviewDate" class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Firmanın Çalıştığı Sektör</label>
+                            <select class="form-control" name="Sector.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                <option selected disabled>Sektör Seçiniz</option>
+                                @foreach (var sector in Model.Sectors)
+                                {
+                                    <option value="@sector.Id">@sector.Name</option>
+                                }
+                            </select><span id="select-error" class="help-block help-block-error"></span>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Firmanın Profili</label>
+                            <select class="form-control" name="CompanyProfile.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                <option selected disabled>Profil Seçiniz</option>
+                                @foreach (var companyProfile in Model.CompanyProfiles)
+                                {
+                                    <option value="@companyProfile.Id">@companyProfile.Name</option>
+                                }
+                            </select><span id="select-error" class="help-block help-block-error"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="portlet box red">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="glyphicon glyphicon-pushpin"></i>Firmanın İlgilendiği Fuarlar
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sample_1_2_wrapper" class="dataTables_wrapper">
+                            <div class="row"></div>
+                            <div class="table-scrollable">
+                                <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable" id="interestedFairTable" role="grid" aria-describedby="sample_1_2_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
+                                                    " style="width: 70px;">
+                                                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                    <input type="checkbox" class="group-checkable" data-set="#sample_1_2 .checkboxes">
+                                                    <span></span>
+                                                </label>
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" Fair Name : activate to sort column descending" style="width: 157px;"> Fair Name </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" Country : activate to sort column ascending" style="width: 238px;"> Country </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" City : activate to sort column ascending" style="width: 119px;"> City </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" Start Date : activate to sort column ascending" style="width: 120px;"> Start Date </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" End Date : activate to sort column ascending" style="width: 123px;"> End Date </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var fair in Model.Fairs)
+                                        {
+                                            @if (Model.Fairs.IndexOf(fair) % 2 == 1)
+                                            {
+                                                <tr class="gradeX odd" role="row">
+                                                    <td>
+                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                            <input type="checkbox" class="checkboxes" name="FairIds" value="@fair.Id">
+                                                            <span></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="sorting_1"> @fair.Name </td>
+                                                    <td>
+                                                        @fair.Country
+                                                    </td>
+                                                    <td>
+                                                        <span class="label label-sm label-info"> @fair.City </span>
+                                                    </td>
+                                                    <td class="center"> @fair.StartDate </td>
+                                                    <td class="center">
+                                                        @fair.EndDate
+                                                    </td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr class="gradeX even" role="row">
+                                                    <td>
+                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                            <input type="checkbox" class="checkboxes" name="FairIds" value="@fair.Id">
+                                                            <span></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="sorting_1"> @fair.Name </td>
+                                                    <td>
+                                                        @fair.Country
+                                                    </td>
+                                                    <td>
+                                                        <span class="label label-sm label-info"> @fair.City </span>
+                                                    </td>
+                                                    <td class="center"> @fair.StartDate </td>
+                                                    <td class="center">
+                                                        @fair.EndDate
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Görüşme Notları</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn green">Kaydet</button>
+                            <button type="button" class="btn default">Sil</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>
+
+@section DataTableJS{
+    <script src="~/assets/global/plugins/datatables/datatables.all.min.js"></script>
+    <script src="~/assets/global/plugins/datatables/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#interestedFairTable').DataTable();
+        });
+    </script>
+    <script src="~/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#InterviewDatePicker').datetimepicker();
+        });
+    </script>
+}
+
+
+

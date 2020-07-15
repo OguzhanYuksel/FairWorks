@@ -53,7 +53,7 @@ namespace FairWorks.WebAPI.Controllers
         [Route("[action]")]
         public async Task<ActionResult<List<PersonelDTO>>> GetByName(string name)
         {
-            var personelList = await _personelService.GetByNameAsync(name);
+            var personelList = await _personelService.GetByNameListAsync(name);
             return personelList;
         }
 

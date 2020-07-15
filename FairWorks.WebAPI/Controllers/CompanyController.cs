@@ -14,9 +14,11 @@ namespace FairWorks.WebAPI.Controllers
     public class CompanyController : ControllerBase
     {
         private readonly ICompanyService _companyService;
-        public CompanyController(ICompanyService companyService)
+        private readonly ICompanyProfileService _companyProfileService;
+        public CompanyController(ICompanyService companyService, ICompanyProfileService companyProfileService)
         {
             _companyService = companyService;
+            _companyProfileService = companyProfileService;
         }
 
         [HttpGet]
@@ -53,7 +55,7 @@ namespace FairWorks.WebAPI.Controllers
         [Route("[action]")]
         public async Task<ActionResult<List<CompanyDTO>>> GetByName(string name)
         {
-            var companyList = await _companyService.GetByNameAsync(name);
+            var companyList = await _companyService.GetByNameListAsync(name);
             return companyList;
         }
 
@@ -65,6 +67,14 @@ namespace FairWorks.WebAPI.Controllers
             if (result)
                 return Ok("Company is deleted");
             return BadRequest("Company not found");
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ActionResult<List<CompanyProfileDTO>>> GetCompanyProfiles()
+        {
+            var companyList = await _companyProfileService.GetAllAsync();
+            return companyList;
         }
     }
 }
