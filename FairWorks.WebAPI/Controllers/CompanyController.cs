@@ -15,10 +15,11 @@ namespace FairWorks.WebAPI.Controllers
     {
         private readonly ICompanyService _companyService;
         private readonly ICompanyProfileService _companyProfileService;
-        public CompanyController(ICompanyService companyService, ICompanyProfileService companyProfileService)
+        public CompanyController(ICompanyService companyService, ICompanyProfileService companyProfileService,ISectorService sectorService)
         {
             _companyService = companyService;
             _companyProfileService = companyProfileService;
+
         }
 
         [HttpGet]

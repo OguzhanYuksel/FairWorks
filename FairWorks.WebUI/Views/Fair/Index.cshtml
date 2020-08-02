@@ -1,0 +1,106 @@
+﻿@model FairWorks.WebUI.Models.Fair.FairViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pageHeader{
+    <div class="note note-info">
+        <p> Fuar Bilgileri </p>
+    </div>
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Fuar Bilgileri
+                </div>
+                <div class="tools">
+                    <a href="" class="collapse"> </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                    <a href="" class="reload"> </a>
+                    <a href="" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form asp-action="Index">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Fuar İsmi</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Name" class="form-control" placeholder="Fuar İsmi">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Fuar Başlangıç Tarihi</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="StartDate" class="form-control" placeholder="Fuar Başlangıç Tarihi">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Fuar Bitiş Tarihi</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="EndDate" class="form-control" placeholder="Fuar Bitiş Tarihi">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Aktiflik Durumu</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Active" class="form-control" placeholder="Aktiflik Durumu">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Ülke</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Country" class="form-control" placeholder="Ülke">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Şehir</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="City" class="form-control" placeholder="Şehir">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn blue">Kaydet</button>
+                        <button type="button" class="btn default">Sil</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+

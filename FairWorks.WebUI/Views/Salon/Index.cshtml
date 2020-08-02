@@ -1,0 +1,85 @@
+﻿@model FairWorks.WebUI.Models.Salon.SalonViewModel
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pageHeader{
+    <div class="note note-info">
+        <p> Fuar Bilgileri </p>
+    </div>
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Fuar Bilgileri
+                </div>
+                <div class="tools">
+                    <a href="" class="collapse"> </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                    <a href="" class="reload"> </a>
+                    <a href="" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form asp-action="Index">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            @*<div class="form-group col-md-6">
+                                    <label class="control-label">Fuar İsmi</label>
+                                    <select class="form-control" name="Fair.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                        <option selected disabled>Profil Seçiniz</option>
+                                        @foreach (var fair in Model.Fair)
+                                        {
+                                            <option value="@Fair.Id">@Fair.Name</option>
+                                        }
+                                    </select><span id="select-error" class="help-block help-block-error"></span>
+                                </div>*@
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Salon Numarası</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="SalonNo" class="form-control" placeholder="Salon Numarası">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Alan</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Area" class="form-control" placeholder="Alan">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="form-group col-md-6">
+                                <label class="control-label">Firmanın Çalıştığı Sektör</label>
+                                <select class="form-control" name="Sector.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                    <option selected disabled>Sektör Seçiniz</option>
+                                    @foreach (var sector in Model.Sectors)
+                                    {
+                                        <option value="@sector.Id">@sector.Name</option>
+                                    }
+                                </select><span id="select-error" class="help-block help-block-error"></span>
+                            </div>*@
+                        </div>
+                        <button type="submit" class="btn blue">Kaydet</button>
+                        <button type="button" class="btn default">Sil</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+
+

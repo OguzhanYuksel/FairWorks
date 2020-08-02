@@ -8,6 +8,8 @@ namespace FairWorks.WebUI.Clients.Abstract
 {
     public interface ICompanyClient
     {
+        Task<List<CompanyDTO>> GetAllCompanies();
+        Task<CompanyDTO> AddCompany(CompanyDTO companyDTO);
         Task<List<CompanyProfileDTO>> GetAllCompanyProfiles();
     }
 }

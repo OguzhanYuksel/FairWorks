@@ -1,0 +1,78 @@
+﻿@model FairWorks.WebUI.Models.Interview.InterviewEditViewModel
+
+<form asp-action="InterviewUpdate">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Görüşme Güncelleme</h4>
+    </div>
+    <div class="modal-body">
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 450px;">
+            <div class="scroller" style="height: 450px; overflow: hidden; width: auto;" data-always-visible="1" data-rail-visible1="1" data-initialized="1">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input name="Id" type="hidden" class="form-control" value="@Model.Interview.Id">
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Görüşmeyi Yapan Satış Personeli</label>
+                            <input name="SalesPerson.Name" type="text" class="form-control" placeholder="İsim" value="@Model.Interview.SalesPerson.Name">
+                            <input name="SalesPerson.Id" type="hidden" class="form-control" value="@Model.Interview.SalesPerson.Id">
+                            <input name="SalesPerson.Surname" type="text" class="form-control" placeholder="Soyisim" value="@Model.Interview.SalesPerson.Surname">
+                            <input name="SalesPerson.Phone" type="text" class="form-control" placeholder="Telefon" value="@Model.Interview.SalesPerson.Phone">
+                            <input name="SalesPerson.Email" type="text" class="form-control" placeholder="Mail" value="@Model.Interview.SalesPerson.Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Görüşülen Kişinin Bilgileri</label>
+                            <input name="Interviewer.Id" type="hidden" class="form-control" value="@Model.Interview.Interviewer.Id">
+                            <input name="Interviewer.Name" type="text" class="form-control" placeholder="İsim" value="@Model.Interview.Interviewer.Name">
+                            <input name="Interviewer.Surname" type="text" class="form-control" placeholder="Soyisim" value="@Model.Interview.Interviewer.Surname">
+                            <input name="Interviewer.Phone" type="text" class="form-control" placeholder="Telefon" value="@Model.Interview.Interviewer.Phone">
+                            <input name="Interviewer.DirectPhone" type="text" class="form-control" placeholder="Dahili Telefon" value="@Model.Interview.Interviewer.DirectPhone">
+                            <input name="Interviewer.Email" type="text" class="form-control" placeholder="Mail" value="@Model.Interview.Interviewer.Email">
+                            <input name="Interviewer.Title" type="text" class="form-control" placeholder="Ünvanı" value="@Model.Interview.Interviewer.Title">
+                            <input name="Company.Id" type="hidden" class="form-control" value="@Model.Interview.Company.Id">
+                            <input name="Company.Name" type="text" class="form-control" placeholder="Firma Adı" value="@Model.Interview.Company.Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Firmanın Çalıştığı Sektör</label>
+                            <select class="form-control" name="Sector.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                <option selected disabled>Sektör Seçiniz</option>
+                                @foreach (var sector in Model.Sectors)
+                                {
+                                    <option value="@sector.Id">@sector.Name</option>
+                                }
+                            </select><span id="select-error" class="help-block help-block-error"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Firmanın Profili</label>
+                            <select class="form-control" name="CompanyProfile.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                <option selected disabled>Profil Seçiniz</option>
+                                @foreach (var companyProfile in Model.CompanyProfiles)
+                                {
+                                    <option value="@companyProfile.Id">@companyProfile.Name</option>
+                                }
+                            </select><span id="select-error" class="help-block help-block-error"></span>
+                        </div>
+                        <div class="form-group col-md-10">
+                            <label class="control-label">Görüşme Tarihi</label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class='input-group date' id='InterviewUpdateDatePicker'>
+                                            <input type='text' name="InterviewDate" class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="slimScrollBar" style="background: rgb(187, 187, 187); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 300px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(234, 234, 234); opacity: 0.2; z-index: 90; right: 1px;"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn dark btn-outline">Kapat</button>
+        <button type="submit" class="btn green">Güncellemeyi Kaydet</button>
+    </div>
+</form>

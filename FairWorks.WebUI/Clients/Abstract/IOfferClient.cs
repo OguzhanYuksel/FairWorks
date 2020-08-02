@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace FairWorks.WebUI.Clients.Abstract
 {
-    public interface IFairClient
+    public interface IOfferClient
     {
-        Task<FairDTO> AddFair(FairDTO fairDTO);
-        Task<List<FairDTO>> GetAllFairs();
-        
+        Task<List<OfferDTO>> GetAllOffers();
     }
 }

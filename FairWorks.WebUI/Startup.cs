@@ -48,6 +48,11 @@ namespace FairWorks.WebUI
             {
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
             });
+            services.AddHttpClient<IOfferClient, OfferClient>(client =>
+            {
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
             #endregion
 
         }

@@ -9,8 +9,6 @@ namespace FairWorks.BLL.Services
     {
         public CompanyService(IUnitofWork uow) : base (uow)
         {
-            //ahmet
-            //mehmet
         }
     }
 }

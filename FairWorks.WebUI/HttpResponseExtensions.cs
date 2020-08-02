@@ -14,7 +14,7 @@ namespace FairWorks.WebUI
             var data = response.Content.ReadAsStringAsync().Result;
             return string.IsNullOrEmpty(data) ?
                             default(T) :
-                            JsonConvert.DeserializeObject<T>(data);
+                            JsonConvert.DeserializeObject<T>(data,new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
         }
 
         public static string ContentAsJson(this HttpResponseMessage response)

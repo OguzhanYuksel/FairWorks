@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FairWorks.DTO;
 using FairWorks.WebUI.Clients.Abstract;
@@ -26,19 +28,48 @@ namespace FairWorks.WebUI.Controllers
             var sectorList = await _sectorClient.GetAllAsync();
             var companyProfileList = await _companyClient.GetAllCompanyProfiles();
             var activeFairList = await _fairClient.GetAllFairs();
+            var interviewList = await _interviewClient.GetAllAsync();
+            var salonList = new List<SalonDTO>();
+            foreach (var activeFair in activeFairList)
+            {
+                salonList.AddRange(activeFair.Salons);
+            }
+
             InterviewViewModel vm = new InterviewViewModel()
             {
                 Sectors = sectorList,
                 CompanyProfiles = companyProfileList,
-                Fairs = activeFairList
+                Fairs = activeFairList,
+                Salons = salonList,
+                Interviews = interviewList
             };
             return View(vm);
         }
-        
+
+        [HttpGet]
+        public async Task<ActionResult> InterviewUpdate(string Id)
+        {
+            InterviewEditViewModel vm = new InterviewEditViewModel();
+            vm.CompanyProfiles = await _companyClient.GetAllCompanyProfiles();
+            vm.Sectors = await _sectorClient.GetAllAsync();
+            vm.Interview = await _interviewClient.GetById(Id);
+            return PartialView(vm);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> InterviewUpdate(InterviewDTO interviewDTO)
+        {
+            var result = await _interviewClient.UpdateAsync(interviewDTO);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public async Task<ActionResult> AddInterview(InterviewDTO interviewDTO)
         {
-            var interview = await _interviewClient.AddInterview(interviewDTO);
-            return Ok(interview);
+            await _interviewClient.AddInterview(interviewDTO);
+            return RedirectToAction("Index");
         }
+
+       
     }
 }

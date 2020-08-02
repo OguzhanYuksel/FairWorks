@@ -1,0 +1,249 @@
+﻿@model FairWorks.WebUI.Models.Company.CompanyViewModel
+
+@{
+    ViewData["Title"] = "CompanyAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section DataTableCSS{
+    <link href="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" />
+    <link href="~/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" />
+    <link href="~/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+}
+
+@section pageHeader{
+
+    <div class="note note-info">
+        <p> Firma Ekleme </p>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="portlet box blue ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Firma Ekleme
+                </div>
+                <div class="tools">
+                    <a href="" class="collapse"> </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                    <a href="" class="reload"> </a>
+                    <a href="" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form asp-action="Index">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Firma İsmi</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Name" class="form-control" placeholder="Firma İsmi">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Telefon</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Phone" class="form-control" placeholder="Telefon">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Mail</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Email" class="form-control" placeholder="Mail">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Adres Bilgileri</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Address" class="form-control" placeholder="Adres Bilgileri">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Şehir</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="City" class="form-control" placeholder="Şehir">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Ülke</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Country" class="form-control" placeholder="Ülke">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Fax Numarası</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="Fax" class="form-control" placeholder="Fax Numarası">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Vergi Dairesi</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="TaxOffice" class="form-control" placeholder="Vergi Dairesi">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input has-success">
+                                <label class="col-md-3 control-label" for="form_control_1">Vergi Numarası</label>
+                                <div class="col-md-9">
+                                    <div class="input-icon right">
+                                        <input type="text" name="TaxNumber" class="form-control" placeholder="Vergi Numarası">
+                                        <div class="form-control-focus"> </div>
+                                        <span class="help-block">Boş Geçilemez</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Firmanın Çalıştığı Sektör</label>
+                            <select class="form-control" name="Sector.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                <option selected disabled>Sektör Seçiniz</option>
+                                @foreach (var sector in Model.Sectors)
+                                {
+                                    <option value="@sector.Id">@sector.Name</option>
+                                }
+                            </select><span id="select-error" class="help-block help-block-error"></span>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Firmanın Profili</label>
+                            <select class="form-control" name="CompanyProfile.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
+                                <option selected disabled>Profil Seçiniz</option>
+                                @foreach (var companyProfile in Model.CompanyProfiles)
+                                {
+                                    <option value="@companyProfile.Id">@companyProfile.Name</option>
+                                }
+                            </select><span id="select-error" class="help-block help-block-error"></span>
+                        </div>
+                        <button type="submit" class="btn blue">Kaydet</button>
+                        <button type="button" class="btn default">Sil</button>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet box red">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="glyphicon glyphicon-pushpin"></i>Firma Listesi
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sample_1_2_wrapper" class="dataTables_wrapper">
+                    <div class="row"></div>
+                    <div class="table-scrollable">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable" id="CompanyTable" role="grid" aria-describedby="sample_1_2_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
+                                                    " style="width: 70px;">
+                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                            <input type="checkbox" class="group-checkable" data-set="#sample_1_2 .checkboxes">
+                                            <span></span>
+                                        </label>
+                                    </th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" Company Name : activate to sort column descending" style="width: 157px;"> Firma İsmi </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" Phone : activate to sort column ascending" style="width: 238px;"> Telefon </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" Email : activate to sort column ascending" style="width: 119px;"> Mail </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" Address : activate to sort column ascending" style="width: 120px;"> Adres </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" City : activate to sort column ascending" style="width: 123px;"> Şehir </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" Country : activate to sort column ascending" style="width: 123px;"> Ülke </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" Fax : activate to sort column ascending" style="width: 123px;"> Fax Numarası </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" TaxOffice : activate to sort column ascending" style="width: 123px;"> Vergi Dairesi </th>
+                                    <th class="sorting" tabindex="0" aria-controls="sample_1_2" rowspan="1" colspan="1" aria-label=" TaxNumber : activate to sort column ascending" style="width: 123px;"> Vergi Numarası </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    @foreach (var company in Model.Companies)
+                                    {
+
+                                        <tr class="gradeX odd" role="row">
+                                            <td>
+                                                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                    <input type="checkbox" class="checkboxes" name="" value="@company.Id">
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                            <td class="sorting_1"> @company.Name </td>
+                                            <td>
+                                                @company.Phone
+                                            </td>
+                                            <td>
+                                                <span class="label label-sm label-info"> @company.Email </span>
+                                            </td>
+                                            <td class="center">@company.Address</td>
+                                            <td class="center">
+                                                @company.City
+                                            </td>
+                                            <td class="center">@company.Country</td>
+                                            <td class="center">
+                                                @company.Fax
+                                            </td>
+                                            <td class="center">@company.TaxOffice</td>
+                                            <td class="center">
+                                                @company.TaxNumber
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+@section DataTableJS{
+    <script src="~/assets/global/plugins/datatables/datatables.all.min.js"></script>
+    <script src="~/assets/global/plugins/datatables/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#CompanyTable').DataTable();
+        });
+    </script>
+}

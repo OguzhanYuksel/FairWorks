@@ -8,6 +8,10 @@ namespace FairWorks.WebUI.Clients.Abstract
 {
     public interface IInterviewClient
     {
-        Task<InterviewDTO> AddInterview(InterviewDTO interviewDTO);
+        
+        Task<List<InterviewDTO>> GetAllAsync();
+        Task<string> AddInterview(InterviewDTO interviewDTO);
+        Task<InterviewDTO> GetById(string Id);
+        Task<string> UpdateAsync(InterviewDTO interviewDTO);
     }
 }
