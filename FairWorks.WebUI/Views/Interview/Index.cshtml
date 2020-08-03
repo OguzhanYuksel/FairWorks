@@ -436,11 +436,11 @@
                     $('#InterviewerCompanyName').val(data.interview.company.name);
 
                     $('#SectorSelectdv select option').filter(function () {
-                        return ($(this).val() == data.interview.sector.id); //To select Blue
+                        return ($(this).val() == data.interview.sector.id);
                     }).prop('selected', true);
 
                     $('#CompanyProfileSelectdv select option').filter(function () {
-                        return ($(this).val() == data.interview.companyProfile.id); //To select Blue
+                        return ($(this).val() == data.interview.companyProfile.id);
                     }).prop('selected', true);
 
                     $('#InterviewDateId').val(data.interview.interviewDate);
