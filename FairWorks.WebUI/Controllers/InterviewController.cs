@@ -47,13 +47,11 @@ namespace FairWorks.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> InterviewUpdate(string Id)
+        public async Task<ActionResult<InterviewDTO>> InterviewUpdate(string Id)
         {
             InterviewEditViewModel vm = new InterviewEditViewModel();
-            vm.CompanyProfiles = await _companyClient.GetAllCompanyProfiles();
-            vm.Sectors = await _sectorClient.GetAllAsync();
             vm.Interview = await _interviewClient.GetById(Id);
-            return PartialView(vm);
+            return Ok(vm);
         }
 
         [HttpPost]
@@ -63,13 +61,19 @@ namespace FairWorks.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+
         [HttpPost]
         public async Task<ActionResult> AddInterview(InterviewDTO interviewDTO)
         {
             await _interviewClient.AddInterview(interviewDTO);
             return RedirectToAction("Index");
         }
+        [HttpDelete]
+        public async Task<ActionResult> InterviewDelete(string Id)
+        {
+            await _interviewClient.DeleteAsync(Id);
+            return RedirectToAction("Index");
+        }
 
-       
     }
 }

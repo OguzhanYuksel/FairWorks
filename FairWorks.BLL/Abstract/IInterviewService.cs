@@ -12,5 +12,6 @@ namespace FairWorks.BLL
     {
         Task<List<InterviewDTO>> GetAllWithIncludesAsync();
         Task<InterviewDTO> GetAllWithIncludesAsyncById(Guid Id);
+        Task<bool> DeleteInterviewAsync(Guid Id);
     }
 }

@@ -58,5 +58,13 @@ namespace FairWorks.WebUI.Clients.Services
                 return await Task.FromResult("Görüşme Güncellendi.");
             return await Task.FromResult("Görüşme Güncellenemedi.");
         }
+
+        public async Task<string> DeleteAsync(string Id)
+        {
+            var response = await _httpClient.DeleteAsync("http://localhost:57892/api/Interview/Delete?Id=" + Id);
+            if (response.StatusCode == HttpStatusCode.OK)
+                return await Task.FromResult("Görüşme Silindi.");
+            return await Task.FromResult("Görüşme Silinemedi.");
+        }
     }
 }

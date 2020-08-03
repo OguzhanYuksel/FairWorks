@@ -13,5 +13,6 @@ namespace FairWorks.WebUI.Clients.Abstract
         Task<string> AddInterview(InterviewDTO interviewDTO);
         Task<InterviewDTO> GetById(string Id);
         Task<string> UpdateAsync(InterviewDTO interviewDTO);
+        Task<string> DeleteAsync(string Id);
     }
 }

@@ -87,9 +87,9 @@ namespace FairWorks.WebAPI.Controllers
 
         [HttpDelete]
         [Route("[action]")]
-        public async Task<bool> Delete(Guid Id)
+        public async Task<bool> Delete(string Id)
         {
-            return await _interviewService.DeleteAsync(Id);
+            return await _interviewService.DeleteInterviewAsync(Guid.Parse(Id));
         }
     }
 }

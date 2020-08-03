@@ -32,7 +32,7 @@ namespace FairWorks.WebUI.Clients.Services
 
         public async Task<List<FairDTO>> GetAllFairs()
         {
-            var response = await _httpClient.GetAsync("http://localhost:57892/api/Fair/GetAllFairs");
+            var response = await _httpClient.GetAsync("http://localhost:57892/api/Fair/GetAll");
             var result = HttpResponseExtensions.ContentAsType<List<FairDTO>>(response);
             return result;
         }

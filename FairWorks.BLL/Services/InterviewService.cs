@@ -1,4 +1,5 @@
 ﻿using FairWorks.Core.Services;
+using FairWorks.DAL.Data.Repositories;
 using FairWorks.DAL.Data.UnitOfWork;
 using FairWorks.DAL.Entities;
 using FairWorks.DTO;
@@ -14,8 +15,10 @@ namespace FairWorks.BLL.Services
 {
     public class InterviewService : ServiceBase<Interview, InterviewDTO>, IInterviewService
     {
+        public readonly IRepository<InterviewFair> _interviewFairRepo;
         public InterviewService(IUnitofWork uow) : base(uow)
         {
+            _interviewFairRepo = _uow.GetRepository<InterviewFair>();
         }
 
         public async Task<List<InterviewDTO>> GetAllWithIncludesAsync()
@@ -46,6 +49,22 @@ namespace FairWorks.BLL.Services
             var json = JsonConvert.SerializeObject(interviewDto, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             var result = JsonConvert.DeserializeObject<InterviewDTO>(json);
             return result;
+        }
+
+        public async Task<bool> DeleteInterviewAsync(Guid Id)
+        {
+            var entity = _repo.Get(x => x.Id == Id);
+            var interviewFairs = await _interviewFairRepo.GetAsyncQueryable(x => x.InterviewId == Id);
+            foreach (var interviewFair in interviewFairs.ToList())
+            {
+                _interviewFairRepo.Delete(interviewFair);
+            }
+            //await _uow.SaveChangesAsync();
+            _repo.Delete(entity);
+            var result = await _uow.SaveChangesAsync();
+            if (result > 1)
+                return true;
+            return false;
         }
     }
 }

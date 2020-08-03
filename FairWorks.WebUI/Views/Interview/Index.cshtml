@@ -43,24 +43,25 @@
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-                <form asp-action="AddInterview">
+                <form method="post">
                     <div class="form-body">
+                        <input type="hidden" name="Id" id="interviewIdToUpdate" value="" />
                         <div class="form-group col-md-6">
                             <label class="control-label">Görüşmeyi Yapan Satış Personeli</label>
-                            <input name="SalesPerson.Name" type="text" class="form-control" placeholder="İsim">
-                            <input name="SalesPerson.Surname" type="text" class="form-control" placeholder="Soyisim">
-                            <input name="SalesPerson.Phone" type="text" class="form-control" placeholder="Telefon">
-                            <input name="SalesPerson.Email" type="text" class="form-control" placeholder="Mail">
+                            <input id="SalesPersonName" name="SalesPerson.Name" type="text" class="form-control" placeholder="İsim">
+                            <input id="SalesPersonSurname" name="SalesPerson.Surname" type="text" class="form-control" placeholder="Soyisim">
+                            <input id="SalesPersonPhone" name="SalesPerson.Phone" type="text" class="form-control" placeholder="Telefon">
+                            <input id="SalesPersonEmail" name="SalesPerson.Email" type="text" class="form-control" placeholder="Mail">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Görüşülen Kişinin Bilgileri</label>
-                            <input name="Interviewer.Name" type="text" class="form-control" placeholder="İsim">
-                            <input name="Interviewer.Surname" type="text" class="form-control" placeholder="Soyisim">
-                            <input name="Interviewer.Phone" type="text" class="form-control" placeholder="Telefon">
-                            <input name="Interviewer.DirectPhone" type="text" class="form-control" placeholder="Dahili Telefon">
-                            <input name="Interviewer.Email" type="text" class="form-control" placeholder="Mail">
-                            <input name="Interviewer.Title" type="text" class="form-control" placeholder="Ünvanı">
-                            <input name="Company.Name" type="text" class="form-control" placeholder="Firma Adı">
+                            <input id="InterviewerName" name="Interviewer.Name" type="text" class="form-control" placeholder="İsim">
+                            <input id="InterviewerSurname" name="Interviewer.Surname" type="text" class="form-control" placeholder="Soyisim">
+                            <input id="InterviewerPhone" name="Interviewer.Phone" type="text" class="form-control" placeholder="Telefon">
+                            <input id="InterviewerDirectPhone" name="Interviewer.DirectPhone" type="text" class="form-control" placeholder="Dahili Telefon">
+                            <input id="InterviewerEmail" name="Interviewer.Email" type="text" class="form-control" placeholder="Mail">
+                            <input id="InterviewerTitle" name="Interviewer.Title" type="text" class="form-control" placeholder="Ünvanı">
+                            <input id="InterviewerCompanyName" name="Company.Name" type="text" class="form-control" placeholder="Firma Adı">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Görüşme Tarihi</label>
@@ -68,7 +69,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class='input-group date' id='InterviewDatePicker'>
-                                            <input type='text' name="InterviewDate" class="form-control" />
+                                            <input id="InterviewDateId" type='text' name="InterviewDate" class="form-control" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -77,7 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" id="SectorSelectdv">
                             <label class="control-label">Firmanın Çalıştığı Sektör</label>
                             <select class="form-control" name="Sector.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
                                 <option selected disabled>Sektör Seçiniz</option>
@@ -88,7 +89,7 @@
                             </select><span id="select-error" class="help-block help-block-error"></span>
                         </div>
                         <div class="col-md-6"></div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" id="CompanyProfileSelectdv">
                             <label class="control-label">Firmanın Profili</label>
                             <select class="form-control" name="CompanyProfile.Id" aria-required="true" aria-invalid="false" aria-describedby="select-error">
                                 <option selected disabled>Profil Seçiniz</option>
@@ -274,8 +275,10 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="btn green">Kaydet</button>
-                            <button type="button" class="btn default">Sil</button>
+                            <button formaction="/Interview/AddInterview" class="btn green">Kaydet</button>
+                            <button formaction="/Interview/InterviewUpdate" id="InterviewUpdateBtn" class="btn blue">Görüşmeyi Güncelle</button>
+                            
+                            @*<button type="button" class="btn default">Sil</button>*@
                         </div>
                     </div>
                 </form>
@@ -340,10 +343,10 @@
                                                 @interview.Sector.Name
                                             </td>
                                             <td>
-                                                <a class="btn blue btn-outline sbold" name="interviewUpdateAnchor" asp-action="InterviewUpdate" asp-route-id="@interview.Id" data-target="#modal-container" data-toggle="modal"> Güncelle </a>
+                                                <a class="btn blue btn-outline sbold" name="interviewUpdateAnchor" id="@interview.Id"> Güncelle </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger btn-sm" asp-action="InterviewDelete" asp-route-id="@interview.Id">Delete</a>
+                                                <a class="btn btn-danger btn-sm" name="interviewDeleteAnchor" id="@interview.Id">Delete</a>
                                             </td>
                                         </tr>
                                     }
@@ -373,14 +376,10 @@
                                                 @interview.Sector.Name
                                             </td>
                                             <td>
-                                                <a class="btn blue btn-outline sbold" name="interviewUpdateAnchor" asp-action="InterviewUpdate" asp-route-id="@interview.Id" data-target="#modal-container" data-toggle="modal"> Güncelle </a>
-                                                <div id="modal-container" class="modal fade" tabindex="-1" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-content">
-                                                    </div>
-                                                </div>
+                                                <a class="btn blue btn-outline sbold" name="interviewUpdateAnchor" id="@interview.Id"> Güncelle </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger btn-sm" asp-action="UserDelete" asp-route-id="@interview.Id">Delete</a>
+                                                <a class="btn btn-danger btn-sm" name="interviewDeleteAnchor" id="@interview.Id">Delete</a>
                                             </td>
                                         </tr>
                                     }
@@ -399,6 +398,9 @@
     <script src="~/assets/global/plugins/datatables/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
+            if ($('#interviewIdToUpdate').val() == undefined || $('#interviewIdToUpdate').val() == "") {
+                $('#InterviewUpdateBtn').attr("disabled", true);
+            }
             $('#interestedFairTable').DataTable();
             $('#activeFairSalonTable').DataTable();
             $('#recordedInterviewsTable').DataTable();
@@ -413,30 +415,60 @@
     <script src="../assets/pages/scripts/ui-modals.min.js" type="text/javascript"></script>
     <script>
         $("[name='interviewUpdateAnchor']").click(function () {
-            $('#modal-container').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget); // Button that triggered the modal
+            $.ajax({
+                url: 'http://localhost:57901/Interview/InterviewUpdate?Id=' + this.id,
+                type: "GET",
+                success: function (data) {
+                    $('#interviewIdToUpdate').val(data.interview.id);
+                    $('#InterviewUpdateBtn').attr("disabled", false);
 
-                var url = button.attr("href");
+                    $('#SalesPersonName').val(data.interview.salesPerson.name);
+                    $('#SalesPersonSurname').val(data.interview.salesPerson.surname);
+                    $('#SalesPersonPhone').val(data.interview.salesPerson.phone);
+                    $('#SalesPersonEmail').val(data.interview.salesPerson.email);
 
-                var modal = $(this);
+                    $('#InterviewerName').val(data.interview.interviewer.name);
+                    $('#InterviewerSurname').val(data.interview.interviewer.surname);
+                    $('#InterviewerPhone').val(data.interview.interviewer.name);
+                    $('#InterviewerDirectPhone').val(data.interview.interviewer.directPhone);
+                    $('#InterviewerEmail').val(data.interview.interviewer.email);
+                    $('#InterviewerTitle').val(data.interview.interviewer.title);
+                    $('#InterviewerCompanyName').val(data.interview.company.name);
 
-                // note that this will replace the content of modal-content everytime the modal is opened
-                modal.find('.modal-content').load(url);
-            });
+                    $('#SectorSelectdv select option').filter(function () {
+                        return ($(this).val() == data.interview.sector.id); //To select Blue
+                    }).prop('selected', true);
 
-            $('#InterviewUpdateDatePicker').datetimepicker();
+                    $('#CompanyProfileSelectdv select option').filter(function () {
+                        return ($(this).val() == data.interview.companyProfile.id); //To select Blue
+                    }).prop('selected', true);
 
-            $('#modal-container').on('hidden.bs.modal', function () {
+                    $('#InterviewDateId').val(data.interview.interviewDate);
 
-                // remove the bs.modal data attribute from it
+                    $('#interestedFairTable tr:has(td)').find('input[type="checkbox"]').each(function () {
+                        var chkbox = $(this);
+                        data.interview.interviewFairs.forEach(function (item) {
+                            if (chkbox.val() == item.fair.id) {
+                                chkbox.prop('checked', true);
+                            }
+                        });
+                    })
 
-                $(this).removeData('bs.modal');
-
-                // and empty the modal-content element
-
-                $('#modal-container .modal-content').empty();
-
-            });
+                    $('#activeFairSalonTable tr:has(td)').find('input[type="checkbox"]').each(function () {
+                        var chkbox = $(this);
+                        debugger;
+                        if (chkbox.val() == data.interview.salon.id) {
+                            chkbox.prop('checked', true);
+                        }
+                    })
+                },
+            })
+        });
+        $("[name='interviewDeleteAnchor']").click(function () {
+            $.ajax({
+                url: 'http://localhost:57901/Interview/InterviewDelete?Id=' + this.id,
+                type: "DELETE",
+            })
         });
     </script>
 }
