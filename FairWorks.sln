@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FairWorks.Core", "..\FairWorks.Core\FairWorks.Core.csproj", "{B36376C5-267E-43E3-A47B-82E082FF90CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FairWorks.Core", "FairWorks.Core\FairWorks.Core.csproj", "{B36376C5-267E-43E3-A47B-82E082FF90CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FairWorks.DAL", "..\FairWorks.DAL\FairWorks.DAL.csproj", "{703CBE31-95EB-4CD7-9B14-DEF9589626DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FairWorks.DAL", "FairWorks.DAL\FairWorks.DAL.csproj", "{703CBE31-95EB-4CD7-9B14-DEF9589626DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FairWorks.BLL", "FairWorks.BLL\FairWorks.BLL.csproj", "{CAC8E4FF-5272-4FF3-82B9-51EE79FF5B58}"
 EndProject

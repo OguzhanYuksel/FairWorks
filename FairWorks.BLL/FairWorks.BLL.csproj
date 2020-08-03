@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\FairWorks.Core\FairWorks.Core.csproj" />
+    <ProjectReference Include="..\FairWorks.Core\FairWorks.Core.csproj" />
     <ProjectReference Include="..\FairWorks.DTO\FairWorks.DTO.csproj" />
     <ProjectReference Include="..\FairWorks.Mapping\FairWorks.Mapping.csproj" />
   </ItemGroup>
